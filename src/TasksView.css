@@ -1,0 +1,41 @@
+.TasksView {
+  align-items: center;
+}
+
+.Task {
+  padding: 0.3rem 0.5rem;
+}
+
+.Task.Done {
+  opacity: 0.5;
+}
+
+.TaskText {
+  margin-left: 1rem;
+  flex-grow: 1;
+}
+
+@media (min-width: 768px) {
+  .TasksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+  }
+
+  .Task {
+    flex: 0 0;
+    flex-grow: 1;
+    flex-basis: 200px;
+    min-width: 200px;
+    max-width: 20vw;
+    margin: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--shadow);
+    box-sizing: border-box;
+    transition: box-shadow var(--transition-duration);
+  }
+
+  .Task:hover {
+    box-shadow: 0 2px 8px var(--shadow-changed);
+  }
+}
