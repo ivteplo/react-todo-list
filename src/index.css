@@ -1,11 +1,32 @@
 :root {
+  --background: #fff;
+  --foreground: #000;
+
   --primary: #3e7ef0;
   --primary-changed: #2c68d3;
-  --secondary-bg: #efefef;
+
+  --secondary-bg: #e5e5e5;
+
   --shadow: #aaa;
   --shadow-changed: #9a9a9a;
+
   --disabled: #ddd;
+
   --transition-duration: 0.3s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000;
+    --foreground: #f5f5f5;
+
+    --secondary-bg: #101010;
+
+    --shadow: #333;
+    --shadow-changed: #434343;
+
+    --disabled: #444;
+  }
 }
 
 * {
@@ -19,6 +40,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 code {
@@ -55,8 +78,10 @@ input {
   border-radius: 5px;
   border: none;
   transition: box-shadow var(--transition-duration);
+  color: currentColor;
   outline: none;
   font-size: 1rem;
+  background-color: transparent;
 }
 
 button {
