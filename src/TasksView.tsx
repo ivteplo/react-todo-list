@@ -8,6 +8,7 @@ import {
 import firebase from 'firebase/app'
 import React from 'react'
 import './TasksView.css'
+import Spinner from './Spinner'
 
 export interface TaskInfo {
   taskId: string
@@ -18,14 +19,20 @@ export interface TaskInfo {
 
 export default function TasksView() {
   const user = useUser()
-  const collection = useFirestore().collection(`users/${user.data.uid}/tasks`)
+  const collection = useFirestore()
+    .collection(`users/${user.data.uid}/tasks`)
+    .orderBy('createdAt')
 
   const tasksRequest = useFirestoreCollectionData<TaskInfo>(collection, {
     idField: 'taskId',
   })
 
   if (tasksRequest.status === 'loading') {
-    return <>Loading</>
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Spinner />
+      </div>
+    )
   }
 
   if (tasksRequest.status === 'error') {

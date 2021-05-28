@@ -1,42 +1,61 @@
-import { FC, Suspense, useEffect } from 'react'
-import { AuthCheck } from 'reactfire'
+import React, { useRef } from 'react'
 import firebase from 'firebase/app'
+import TasksView from './TasksView'
+import './Content.css'
 
-import LoadingScreen from './LoadingScreen'
-import HomePage from './HomePage'
+type InputReference = React.RefObject<HTMLInputElement>
 
-const Content: FC = () => {
-  return (
-    <Suspense fallback={<LoadingScreen />}>
-      <AuthCheck fallback={<LoginAnonymously />}>
-        <HomePage />
-      </AuthCheck>
-    </Suspense>
-  )
-}
-
-export default Content
-
-function signInAnonymously() {
-  const auth = firebase.auth()
+function addTask(input: string) {
+  const user = firebase.auth().currentUser!
 
   return new Promise<void>((resolve, reject) => {
-    auth
-      .signInAnonymously()
+    firebase
+      .firestore()
+      .collection(`users/${user.uid}/tasks`)
+      .add({
+        task: input,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        done: false,
+      })
       .then(() => {
         resolve()
       })
       .catch(() => {
-        alert('Error while signing in')
+        alert('Error while adding a task')
         reject()
       })
   })
 }
 
-function LoginAnonymously() {
-  useEffect(() => {
-    signInAnonymously()
-  })
+const Content = () => {
+  const taskInputRef: InputReference = useRef(null)
 
-  return <LoadingScreen />
+  const _addTask = (event: React.FormEvent) => {
+    event.preventDefault()
+
+    if (taskInputRef.current?.value) {
+      addTask(taskInputRef.current.value)
+      taskInputRef.current.value = ''
+    }
+  }
+
+  return (
+    <>
+      <h1 style={{ marginTop: '20px' }}>To do</h1>
+      <form action="#" method="post" onSubmit={_addTask}>
+        <div className="Row TaskInputWrapper">
+          <input
+            ref={taskInputRef}
+            type="text"
+            placeholder="My task for today is..."
+            className="TaskInput"
+          />
+          <button type="submit">Add</button>
+        </div>
+      </form>
+      <TasksView />
+    </>
+  )
 }
+
+export default Content

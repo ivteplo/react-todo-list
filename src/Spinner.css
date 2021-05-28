@@ -1,0 +1,33 @@
+.Spinner {
+  width: 1rem;
+  height: 1rem;
+
+  display: block;
+
+  position: relative;
+}
+
+.Spinner > .Loader {
+  width: 1rem;
+  height: 1rem;
+
+  display: block;
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+  border: 0.2rem solid var(--primary);
+  border-top-color: transparent;
+
+  animation: rotate calc(var(--transition-duration) * 1.5) infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
