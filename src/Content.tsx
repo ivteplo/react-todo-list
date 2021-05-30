@@ -20,9 +20,9 @@ function addTask(input: string) {
       .then(() => {
         resolve()
       })
-      .catch(() => {
+      .catch((error) => {
         alert('Error while adding a task')
-        reject()
+        reject(error)
       })
   })
 }
