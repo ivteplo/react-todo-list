@@ -1,21 +1,9 @@
 import { useFirestore, useFirestoreCollectionData, useUser } from 'reactfire'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faCircle as circleIcon,
-  faCheckCircle as checkedCircleIcon,
-  faTrashAlt as trashIcon,
-} from '@fortawesome/free-regular-svg-icons'
+import { Icon, circleIcon, checkedCircleIcon, trashIcon } from './Icons'
 import firebase from 'firebase/app'
-import React from 'react'
-import './TasksView.css'
+import { TaskInfo } from './TaskInfo'
 import Spinner from './Spinner'
-
-export interface TaskInfo {
-  taskId: string
-  task: string
-  createdAt: firebase.firestore.Timestamp
-  done: boolean
-}
+import './TasksView.css'
 
 export default function TasksView() {
   const user = useUser()
@@ -117,7 +105,7 @@ function Task({ task }: { task: TaskInfo }) {
     <div className={`Task ${task.done ? 'Done' : ''}`}>
       <div className="Row" style={{ alignItems: 'center' }}>
         <button type="button" onClick={_toggleDone}>
-          <FontAwesomeIcon icon={task.done ? checkedCircleIcon : circleIcon} />
+          <Icon icon={task.done ? checkedCircleIcon : circleIcon} />
           <span className="ScreenReaderOnly">
             {!task.done ? 'Done' : 'Not done'}
           </span>
@@ -125,7 +113,7 @@ function Task({ task }: { task: TaskInfo }) {
         {/* <button type="button">Change</button> */}
         <p className="TaskText">{task.task}</p>
         <button type="button" onClick={_deleteTask}>
-          <FontAwesomeIcon icon={trashIcon} />
+          <Icon icon={trashIcon} />
           <span className="ScreenReaderOnly">Delete</span>
         </button>
       </div>

@@ -1,7 +1,6 @@
-import React from 'react'
 import './Spinner.css'
 
-const Spinner = ({ className = '', ...props } = {}) => {
+export default function Spinner({ className = '', ...props } = {}) {
   return (
     <div className={'Spinner ' + className} {...props}>
       <div className="Loader" />
@@ -9,5 +8,3 @@ const Spinner = ({ className = '', ...props } = {}) => {
     </div>
   )
 }
-
-export default Spinner

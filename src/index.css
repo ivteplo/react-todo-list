@@ -13,6 +13,7 @@
   --disabled: #ddd;
 
   --transition-duration: 0.3s;
+  --border-radius: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,6 +33,10 @@
 * {
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-size: 18px;
 }
 
 html,
@@ -95,7 +100,7 @@ input {
   height: 44px;
   padding: 0 0.5em;
 
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   border: none;
   outline: none;
 
@@ -106,24 +111,39 @@ input {
 }
 
 button {
-  background-color: transparent;
-  color: var(--primary);
-
   font-weight: 500;
   font-size: 1em;
   font-family: inherit;
 
-  padding: 0.5em;
+  padding: 0.5rem 1rem;
+
+  border-radius: var(--border-radius);
 
   border: none;
   outline: none;
 
   cursor: pointer;
+}
+
+button.primary {
+  background-color: var(--primary);
+  color: white;
+
+  transition: background-color var(--transition-duration);
+}
+
+button:not(.primary) {
+  background-color: transparent;
+  color: var(--primary);
 
   transition: color var(--transition-duration);
 }
 
-button:hover {
+button.primary:hover {
+  background-color: var(--primary-changed);
+}
+
+button:not(.primary):hover {
   color: var(--primary-changed);
 }
 
