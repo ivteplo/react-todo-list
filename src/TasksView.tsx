@@ -44,7 +44,7 @@ export default function TasksView() {
   return (
     <div className="TasksView">
       {todo.length === 0 ? null : (
-        <section>
+        <section className="TaskGroup">
           <h2 className="SectionTitle">To do</h2>
           <div className="TasksContainer">
             {todo.map((taskData) => {
@@ -55,7 +55,7 @@ export default function TasksView() {
       )}
 
       {done.length === 0 ? null : (
-        <section>
+        <section className="TaskGroup">
           <h2 className="SectionTitle">Done</h2>
           <div className="TasksContainer">
             {done.map((taskData) => {
