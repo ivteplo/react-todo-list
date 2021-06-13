@@ -7,6 +7,13 @@
 
   --secondary-bg: #e5e5e5;
 
+  --priority-1: #ff3d3d;
+  --priority-1-changed: #cc2e2e;
+  --priority-2: #e4b036;
+  --priority-2-changed: #b3861d;
+  --priority-3: #36c742;
+  --priority-3-changed: #1a9424;
+
   --shadow: #aaa;
   --shadow-changed: #9a9a9a;
 
@@ -33,10 +40,6 @@
 * {
   margin: 0;
   padding: 0;
-}
-
-html {
-  font-size: 18px;
 }
 
 html,
@@ -108,6 +111,22 @@ input {
 
   font-size: 1rem;
   font-family: inherit;
+}
+
+select {
+  background-color: transparent;
+  color: var(--foreground);
+
+  padding: 0.5em;
+
+  border: 1px solid var(--foreground);
+  border-radius: var(--border-radius);
+  outline: none;
+
+  font-size: 1rem;
+  font-family: inherit;
+
+  cursor: pointer;
 }
 
 button {

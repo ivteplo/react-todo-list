@@ -5,6 +5,7 @@ export interface TaskInfo {
   task: string
   createdAt: firebase.firestore.Timestamp
   done: boolean
+  priority: number
 }
 
 // Interface used when constructing an object to upload to Firebase
@@ -12,4 +13,5 @@ export interface NewTaskInfo {
   task: string
   createdAt: firebase.firestore.FieldValue
   done: boolean
+  priority: number
 }

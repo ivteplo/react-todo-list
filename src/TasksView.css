@@ -3,10 +3,8 @@
 }
 
 .Task {
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem;
   opacity: 1;
-  transition: opacity var(--transition-duration),
-    box-shadow var(--transition-duration);
 }
 
 .Task.Done {
@@ -41,3 +39,19 @@
     box-shadow: 0 2px 8px var(--shadow-changed);
   }
 }
+
+.Task.Priority1 button.MarkAsDone {
+  --primary: var(--priority-1);
+  --primary-changed: var(--priority-1-changed);
+}
+
+.Task.Priority2 button.MarkAsDone {
+  --primary: var(--priority-2);
+  --primary-changed: var(--priority-2-changed);
+}
+
+.Task.Priority3 button.MarkAsDone {
+  --primary: var(--priority-3);
+  --primary-changed: var(--priority-3-changed);
+}
+

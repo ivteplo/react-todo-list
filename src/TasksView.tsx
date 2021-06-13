@@ -9,13 +9,16 @@ export default function TasksView() {
   const user = useUser()
   const collection = useFirestore()
     .collection(`users/${user.data.uid}/tasks`)
+    .orderBy('priority')
     .orderBy('createdAt')
 
   const tasksRequest = useFirestoreCollectionData<TaskInfo>(collection, {
     idField: 'taskId',
   })
 
-  if (tasksRequest.status === 'loading') {
+  const { status, data: tasks } = tasksRequest
+
+  if (status === 'loading') {
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Spinner />
@@ -23,11 +26,9 @@ export default function TasksView() {
     )
   }
 
-  if (tasksRequest.status === 'error') {
+  if (status === 'error') {
     return <div className="Alert AlertError">Error: {tasksRequest.error}</div>
   }
-
-  const { data: tasks } = tasksRequest
 
   const done = []
   const todo = []
@@ -102,15 +103,14 @@ function Task({ task }: { task: TaskInfo }) {
   }
 
   return (
-    <div className={`Task ${task.done ? 'Done' : ''}`}>
+    <div className={`Task ${task.done ? 'Done' : ''} Priority${task.priority}`}>
       <div className="Row" style={{ alignItems: 'center' }}>
-        <button type="button" onClick={_toggleDone}>
+        <button type="button" onClick={_toggleDone} className="MarkAsDone">
           <Icon icon={task.done ? checkedCircleIcon : circleIcon} />
           <span className="ScreenReaderOnly">
             {!task.done ? 'Done' : 'Not done'}
           </span>
         </button>
-        {/* <button type="button">Change</button> */}
         <p className="TaskText">{task.task}</p>
         <button type="button" onClick={_deleteTask}>
           <Icon icon={trashIcon} />

@@ -1,0 +1,42 @@
+.CreateTaskView {
+  padding: 1rem;
+  justify-content: center;
+
+}
+
+.TaskInput {
+  max-width: 600px;
+  flex-grow: 1;
+  margin-right: 0.5rem;
+}
+
+.TaskOptionalFields {
+  margin-top: 1rem;
+}
+
+.TaskOptionalFields select {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+
+  transition: background-color var(--transition-duration);
+}
+
+.TaskOptionalFields select > option {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.TaskOptionalFields .PriorityField.Priority1 {
+  background-color: var(--priority-1);
+}
+
+.TaskOptionalFields .PriorityField.Priority2 {
+  background-color: var(--priority-2);
+}
+
+.TaskOptionalFields .PriorityField.Priority3 {
+  background-color: var(--priority-3);
+}
+
