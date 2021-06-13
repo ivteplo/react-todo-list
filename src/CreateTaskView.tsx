@@ -38,29 +38,14 @@ export default function CreateTaskView() {
   const _addTask = (event: React.FormEvent) => {
     event.preventDefault()
 
-    const formElements = Array.from(formRef.current?.elements)
-    const { task, priority } = (
-      formElements
-        .filter(input => input.name !== "submitted")
-        .reduce((prev, current) => {
-          if (prev instanceof Node) {
-            prev = {
-              [prev.name]: prev.value,
-            }
-          }
+    const formElements = formRef.current!.elements
+    const { task, priority } = formElements as any
 
-          return {
-            ...prev,
-            [current.name]: current.value
-          }
-        })
-    )
-
-    if (!task) {
+    if (!task.value) {
       return
     }
 
-    addTask(task, +priority)
+    addTask(task.value, +priority.value)
     formRef.current?.reset()
     setPriority(4)
   }
