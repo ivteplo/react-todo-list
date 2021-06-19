@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from 'react'
-import { AuthCheck, useFirestore } from 'reactfire'
+import { AuthCheck } from 'reactfire'
 import firebase from 'firebase/app'
 
 import Spinner from './Spinner'
