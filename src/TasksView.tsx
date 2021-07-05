@@ -66,11 +66,7 @@ export default function TasksView() {
       )}
 
       {!(done.length === 0 && todo.length === 0) ? null : (
-        <p
-          style={{
-            margin: '1.5rem',
-          }}
-        >
+        <p className="OnEmptyMessage">
           Looks like you don't have any tasks yet
         </p>
       )}
