@@ -2,24 +2,24 @@
   display: flex;
 }
 
+.TabBar > a {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  background-color: var(--tab-button-background);
+  transition: background-color var(--transition-duration) !important;
+}
+
+.TabBar > a:hover {
+  background-color: var(--tab-button-background-changed);
+}
+
 @media (min-width: 756px) {
   .TabBar {
     display: flex;
     flex-direction: column;
     min-width: 200px;
     padding: 1rem;
-  }
-
-  .TabBar > a {
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    background-color: var(--tab-button-background);
-    transition: background-color var(--transition-duration) !important;
-  }
-
-  .TabBar > a:hover {
-    background-color: var(--tab-button-background-changed);
   }
 
   .TabBar > a svg {
@@ -30,5 +30,23 @@
 @media (max-width: 755px) {
   .TabView {
     flex-direction: column-reverse;
+  }
+
+  .TabBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .TabBar > a {
+    flex-grow: 1;
+    max-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
   }
 }
