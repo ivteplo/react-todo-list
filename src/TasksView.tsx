@@ -2,7 +2,7 @@ import { useFirestore, useFirestoreCollectionData, useUser } from 'reactfire'
 import { Icon, circleIcon, checkedCircleIcon, trashIcon } from './Icons'
 import firebase from 'firebase/app'
 import { TaskInfo } from './TaskInfo'
-import Spinner from './Spinner'
+import Spinner from './components/Spinner'
 import './TasksView.css'
 
 export default function TasksView() {

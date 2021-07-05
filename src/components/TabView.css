@@ -10,7 +10,8 @@
   transition: background-color var(--transition-duration) !important;
 }
 
-.TabBar > a:hover {
+.TabBar > a:hover,
+.TabBar > a:active {
   background-color: var(--tab-button-background-changed);
 }
 

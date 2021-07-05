@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { AuthCheck } from 'reactfire'
 import firebase from 'firebase/app'
 
-import Spinner from './Spinner'
+import Spinner from './components/Spinner'
 import Content from './Content'
 
 export default function App() {
