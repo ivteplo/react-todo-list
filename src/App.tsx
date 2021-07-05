@@ -9,16 +9,17 @@ export default function App() {
   const [firestoreReady, setFirestoreReady] = useState(false)
 
   useEffect(() => {
-    firebase.firestore().enablePersistence()
-      .then(() => setFirestoreReady(true))
+    firebase
+      .firestore()
+      .enablePersistence()
+      .catch((e) => e)
+      .finally(() => setFirestoreReady(true))
   }, [])
 
   return (
     <Suspense fallback={<Spinner />}>
       <AuthCheck fallback={<LoginAnonymously />}>
-        <div className="App">
-          {firestoreReady && <Content />}
-        </div>
+        <div className="App">{firestoreReady && <Content />}</div>
       </AuthCheck>
     </Suspense>
   )

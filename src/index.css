@@ -2,6 +2,9 @@
   --background: #fff;
   --foreground: #000;
 
+  --tab-button-background: var(--background);
+  --tab-button-background-changed: var(--secondary-bg);
+
   --primary: #3e7ef0;
   --primary-changed: #2c68d3;
 
@@ -90,6 +93,7 @@ h3 {
 
 h1 {
   font-size: 2.5rem;
+  margin-top: 2rem;
 }
 
 .Row {
@@ -129,7 +133,8 @@ select {
   cursor: pointer;
 }
 
-button {
+button,
+.button {
   font-weight: 500;
   font-size: 1em;
   font-family: inherit;
@@ -144,25 +149,29 @@ button {
   cursor: pointer;
 }
 
-button.primary {
+button.primary,
+.button.primary {
   background-color: var(--primary);
   color: white;
 
   transition: background-color var(--transition-duration);
 }
 
-button:not(.primary) {
+button:not(.primary),
+.button:not(.primary) {
   background-color: transparent;
   color: var(--primary);
 
   transition: color var(--transition-duration);
 }
 
-button.primary:hover {
+button.primary:hover,
+.button.primary:hover {
   background-color: var(--primary-changed);
 }
 
-button:not(.primary):hover {
+button:not(.primary):hover,
+.button:not(.primary):hover {
   color: var(--primary-changed);
 }
 

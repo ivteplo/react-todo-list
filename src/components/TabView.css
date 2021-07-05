@@ -1,0 +1,34 @@
+.TabView {
+  display: flex;
+}
+
+@media (min-width: 756px) {
+  .TabBar {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    padding: 1rem;
+  }
+
+  .TabBar > a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    background-color: var(--tab-button-background);
+    transition: background-color var(--transition-duration) !important;
+  }
+
+  .TabBar > a:hover {
+    background-color: var(--tab-button-background-changed);
+  }
+
+  .TabBar > a svg {
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 755px) {
+  .TabView {
+    flex-direction: column-reverse;
+  }
+}
