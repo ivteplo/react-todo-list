@@ -12,7 +12,7 @@ export default function App() {
     firebase
       .firestore()
       .enablePersistence()
-      .catch((e) => e)
+      .catch((e) => {})
       .finally(() => setFirestoreReady(true))
   }, [])
 
