@@ -2,23 +2,24 @@ import { Suspense, useEffect, useState } from 'react'
 import { AuthCheck } from 'reactfire'
 import firebase from 'firebase/app'
 
-import Spinner from './Spinner'
+import Spinner from './components/Spinner'
 import Content from './Content'
 
 export default function App() {
   const [firestoreReady, setFirestoreReady] = useState(false)
 
   useEffect(() => {
-    firebase.firestore().enablePersistence()
-      .then(() => setFirestoreReady(true))
+    firebase
+      .firestore()
+      .enablePersistence()
+      .catch((e) => {})
+      .finally(() => setFirestoreReady(true))
   }, [])
 
   return (
     <Suspense fallback={<Spinner />}>
       <AuthCheck fallback={<LoginAnonymously />}>
-        <div className="App">
-          {firestoreReady && <Content />}
-        </div>
+        <div className="App">{firestoreReady && <Content />}</div>
       </AuthCheck>
     </Suspense>
   )
