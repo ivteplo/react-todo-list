@@ -1,8 +1,12 @@
+import CreateTaskView from '../CreateTaskView'
+import TasksView from '../TasksView'
+
 export const Tasks = () => {
   return (
     <div>
       <h1>Tasks</h1>
-      <p>TODO</p>
+      <CreateTaskView />
+      <TasksView />
     </div>
   )
 }

@@ -64,6 +64,16 @@ export default function TasksView() {
           </div>
         </section>
       )}
+
+      {!(done.length === 0 && todo.length === 0) ? null : (
+        <p
+          style={{
+            margin: '1.5rem',
+          }}
+        >
+          Looks like you don't have any tasks yet
+        </p>
+      )}
     </div>
   )
 }
