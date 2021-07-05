@@ -13,7 +13,7 @@ function addTask(input: string, priority: number) {
       task: input,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       done: false,
-      priority: priority
+      priority: priority,
     }
 
     firebase
@@ -30,7 +30,11 @@ function addTask(input: string, priority: number) {
   })
 }
 
-export default function CreateTaskView() {
+export default function CreateTaskView(
+  { quick }: { quick?: boolean } = {
+    quick: false,
+  }
+) {
   const formRef: FormReference = useRef(null)
 
   const [priority, setPriority] = useState(4)
@@ -65,27 +69,35 @@ export default function CreateTaskView() {
       <div className="Row TaskInputWrapper">
         <input
           type="text"
-          placeholder="My task for today is..."
+          placeholder={!quick ? 'My task for today is...' : 'Add quick task...'}
           className="TaskInput"
           name="task"
           autoComplete="off"
         />
-        <button type="submit" name="submitted" value="true" className="primary">Add</button>
+        <button type="submit" name="submitted" value="true" className="primary">
+          Add
+        </button>
       </div>
-      <div className="Row TaskOptionalFields">
-        <div className="Field">
-          <select
-            name="priority"
-            className={`PriorityField Priority${priority}`}
-            onChange={onPriorityChange}
-          >
-            <option value="4">Default priority</option>
-            <option value="1">Priority 1</option>
-            <option value="2">Priority 2</option>
-            <option value="3">Priority 3</option>
-          </select>
+      {!quick ? (
+        <div className="Row TaskOptionalFields">
+          <div className="Field">
+            <select
+              name="priority"
+              className={`PriorityField Priority${priority}`}
+              onChange={onPriorityChange}
+            >
+              <option value="4">Default priority</option>
+              <option value="1">Priority 1</option>
+              <option value="2">Priority 2</option>
+              <option value="3">Priority 3</option>
+            </select>
+          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <input type="hidden" name="priority" value="4" />
+        </>
+      )}
     </form>
   )
 }

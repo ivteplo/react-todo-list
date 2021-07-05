@@ -4,7 +4,7 @@ import TasksView from '../TasksView'
 export const Home = () => (
   <div>
     <h1>Home</h1>
-    <CreateTaskView />
+    <CreateTaskView quick />
     <TasksView />
   </div>
 )
